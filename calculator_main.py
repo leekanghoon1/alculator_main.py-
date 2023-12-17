@@ -61,10 +61,20 @@ class Main(QDialog):
         equation += operation
         self.line_edit.setText(equation)
 
-    def button_equal_clicked(self):
-        equation = self.equation.text()
-        solution = eval(equation)
-        self.solution.setText(str(solution))
+    def button_equal_clicked(self,temp):
+        equation = self.line_edit.text()
+        if equation:
+            try:
+                if '^' in equation:
+                    equation = equation.replace('^', '**')
+                if '√' in equation:
+                    equation = equation.replace('2√', 'math.sqrt(') + ')'
+                if '%' in equation:
+                    equation = equation.replace('%', '/100*')
+                solution = eval(equation)
+                self.line_edit2.setText(str(solution))
+            except Exception as e:
+                self.line_edit2.setText("Error")
 
     def button_clear_clicked(self):
         self.equation.setText("")
