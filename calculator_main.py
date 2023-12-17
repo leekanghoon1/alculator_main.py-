@@ -82,6 +82,11 @@ class Main(QDialog):
     def button_clear_entry_clicked(self, button):
         self.line_edit.setText("")
 
+    def button_percent_clicked(self, button):
+        equation = self.line_edit.text()
+        equation += '%'
+        self.line_edit.setText(equation)
+    
     def button_backspace_clicked(self):
         equation = self.equation.text()
         equation = equation[:-1]
