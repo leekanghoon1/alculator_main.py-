@@ -86,6 +86,15 @@ class Main(QDialog):
         equation = self.line_edit.text()
         equation += '%'
         self.line_edit.setText(equation)
+
+    def button_reciprocal_clicked(self, button):
+        equation = self.line_edit.text()
+        if equation:
+            try:
+                solution = 1/float(equation)
+                self.line_edit2.setText(str(solution))
+            except Exception as e:
+                self.line_edit2.setText("Error")
     
     def button_backspace_clicked(self):
         equation = self.equation.text()
