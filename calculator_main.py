@@ -39,6 +39,7 @@ class Main(QDialog):
             {'name': '1/x', 'row': 6, 'col': 3, 'func': self.button_reciprocal_clicked},
             {'name': 'x^2', 'row': 7, 'col': 0, 'func': self.button_square_clicked},
             {'name': '2√x', 'row': 7, 'col': 1, 'func': self.button_sqrt_clicked},
+            {'name': 'Backspace', 'row': 7, 'col': 2, 'func': self.button_backspace_clicked}
         ]
 
         for button in buttons:
@@ -113,10 +114,11 @@ class Main(QDialog):
                 self.line_edit2.setText(str(solution))
             except Exception as e:
                 self.line_edit2.setText("Error")
-    def button_backspace_clicked(self):
-        equation = self.equation.text()
+    
+    def button_backspace_clicked(self,button):
+        equation = self.line_edit.text()
         equation = equation[:-1]
-        self.equation.setText(equation)
+        self.line_edit.setText(equation)
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
