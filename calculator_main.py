@@ -1,5 +1,6 @@
 import sys
 from PyQt5.QtWidgets import *
+import math
 
 class Main(QDialog):
     def __init__(self):
@@ -100,6 +101,15 @@ class Main(QDialog):
         if equation:
             try:
                 solution = float(equation) ** 2
+                self.line_edit2.setText(str(solution))
+            except Exception as e:
+                self.line_edit2.setText("Error")
+    
+    def button_sqrt_clicked(self, button):
+        equation = self.line_edit.text()
+        if equation:
+            try:
+                solution = math.sqrt(float(equation))
                 self.line_edit2.setText(str(solution))
             except Exception as e:
                 self.line_edit2.setText("Error")
