@@ -95,7 +95,14 @@ class Main(QDialog):
                 self.line_edit2.setText(str(solution))
             except Exception as e:
                 self.line_edit2.setText("Error")
-    
+    def button_square_clicked(self, button):
+        equation = self.line_edit.text()
+        if equation:
+            try:
+                solution = float(equation) ** 2
+                self.line_edit2.setText(str(solution))
+            except Exception as e:
+                self.line_edit2.setText("Error")
     def button_backspace_clicked(self):
         equation = self.equation.text()
         equation = equation[:-1]
