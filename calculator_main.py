@@ -52,9 +52,9 @@ class Main(QDialog):
     ### functions ###
     #################
     def number_button_clicked(self, num):
-        equation = self.equation.text()
+        equation = self.line_edit.text()
         equation += str(num)
-        self.equation.setText(equation)
+        self.line_edit.setText(equation)
 
     def button_operation_clicked(self, operation):
         equation = self.equation.text()
