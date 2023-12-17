@@ -57,9 +57,9 @@ class Main(QDialog):
         self.line_edit.setText(equation)
 
     def button_operation_clicked(self, operation):
-        equation = self.equation.text()
+        equation = self.line_edit.text()
         equation += operation
-        self.equation.setText(equation)
+        self.line_edit.setText(equation)
 
     def button_equal_clicked(self):
         equation = self.equation.text()
