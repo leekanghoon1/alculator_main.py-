@@ -65,18 +65,30 @@ class Main(QDialog):
 
     def button_equal_clicked(self,temp):
         equation = self.line_edit.text()
-        if equation:
-            try:
-                if '^' in equation:
-                    equation = equation.replace('^', '**')
-                if '√' in equation:
-                    equation = equation.replace('2√', 'math.sqrt(') + ')'
-                if '%' in equation:
-                    equation = equation.replace('%', '/100*')
-                solution = eval(equation)
-                self.line_edit2.setText(str(solution))
-            except Exception as e:
-                self.line_edit2.setText("Error")
+        equation = list(equation)
+        print(equation)
+        solution = float(equation[0])
+        
+        for i in range(1, len(equation), 2):
+            operator = equation[i]
+            number = float(equation[i+1])
+            
+            if operator == '+':
+                solution += number
+            elif operator == '-':
+                solution -= number
+            elif operator == '*':
+                solution *= number
+            elif operator == '/':
+                solution /= number
+            elif operator == '^':
+                solution = math.pow(solution, number)
+            elif operator == '√':
+                solution = math.sqrt(solution)
+            elif operator == '%':
+                solution = solution % number
+        
+        self.line_edit2.setText(str(solution))
 
     def button_clear_clicked(self,temp):
         self.line_edit.setText("")
