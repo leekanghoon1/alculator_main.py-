@@ -88,14 +88,47 @@ class Main(QDialog):
         
         self.line_edit.setText(str(solution))
 
-    def button_clear_clicked(self):
-        self.equation.setText("")
-        self.solution.setText("")
+    def button_clear_clicked(self,temp):
+        self.line_edit.setText("")
 
-    def button_backspace_clicked(self):
-        equation = self.equation.text()
+    def button_clear_entry_clicked(self, button):
+        self.line_edit.setText("")
+
+    def button_percent_clicked(self, button):
+        equation = self.line_edit.text()
+        equation += '%'
+        self.line_edit.setText(equation)
+
+    def button_reciprocal_clicked(self, button):
+        equation = self.line_edit.text()
+        if equation:
+            try:
+                solution = 1/float(equation)
+                self.line_edit.setText(str(solution))
+            except Exception as e:
+                self.line_edit.setText("Error")
+    def button_square_clicked(self, button):
+        equation = self.line_edit.text()
+        if equation:
+            try:
+                solution = float(equation) ** 2
+                self.line_edit.setText(str(solution))
+            except Exception as e:
+                self.line_edit.setText("Error")
+    
+    def button_sqrt_clicked(self, button):
+        equation = self.line_edit.text()
+        if equation:
+            try:
+                solution = math.sqrt(float(equation))
+                self.line_edit.setText(str(solution))
+            except Exception as e:
+                self.line_edit.setText("Error")
+    
+    def button_backspace_clicked(self,button):
+        equation = self.line_edit.text()
         equation = equation[:-1]
-        self.equation.setText(equation)
+        self.line_edit.setText(equation)
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
