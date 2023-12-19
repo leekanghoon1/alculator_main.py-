@@ -1,5 +1,6 @@
 import sys
 from PyQt5.QtWidgets import *
+import math
 
 class Main(QDialog):
     def __init__(self):
@@ -51,19 +52,41 @@ class Main(QDialog):
     ### functions ###
     #################
     def number_button_clicked(self, num):
-        equation = self.equation.text()
+        equation = self.line_edit.text()
         equation += str(num)
-        self.equation.setText(equation)
+        self.line_edit.setText(equation)
 
     def button_operation_clicked(self, operation):
-        equation = self.equation.text()
+        equation = self.line_edit.text()
         equation += operation
-        self.equation.setText(equation)
+        self.line_edit.setText(equation)
 
-    def button_equal_clicked(self):
-        equation = self.equation.text()
-        solution = eval(equation)
-        self.solution.setText(str(solution))
+    def button_equal_clicked(self,temp):
+        equation = self.line_edit.text()
+        equation = list(equation)
+        print(equation)
+        solution = float(equation[0])
+        
+        for i in range(1, len(equation), 2):
+            operator = equation[i]
+            number = float(equation[i+1])
+            
+            if operator == '+':
+                solution += number
+            elif operator == '-':
+                solution -= number
+            elif operator == '*':
+                solution *= number
+            elif operator == '/':
+                solution /= number
+            elif operator == '^':
+                solution = math.pow(solution, number)
+            elif operator == '√':
+                solution = math.sqrt(solution)
+            elif operator == '%':
+                solution = solution % number
+        
+        self.line_edit.setText(str(solution))
 
     def button_clear_clicked(self):
         self.equation.setText("")
