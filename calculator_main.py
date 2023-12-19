@@ -13,6 +13,9 @@ class Main(QDialog):
         main_layout.addWidget(self.line_edit, 0, 0, 1, 5)
 
         buttons = [
+            {'name': 'CE', 'row': 2, 'col': 1, 'func': self.button_clear_entry_clicked},
+            {'name': 'C', 'row': 2, 'col': 2, 'func': self.button_clear_clicked},
+            {'name': '%', 'row': 2, 'col': 0, 'func': self.button_percent_clicked},
             {'name': '/', 'row': 3, 'col': 3, 'func': self.button_operation_clicked},
             {'name': '7', 'row': 4, 'col': 0, 'func': self.number_button_clicked},
             {'name': '8', 'row': 4, 'col': 1, 'func': self.number_button_clicked},
@@ -30,6 +33,9 @@ class Main(QDialog):
             {'name': '0', 'row': 7, 'col': 1, 'func': self.number_button_clicked},
             {'name': '.', 'row': 7, 'col': 2, 'func': self.number_button_clicked},
             {'name': '=', 'row': 7, 'col': 3, 'func': self.button_equal_clicked},
+            {'name': '1/x', 'row': 3, 'col': 0, 'func': self.button_reciprocal_clicked},
+            {'name': 'x^2', 'row': 3, 'col': 1, 'func': self.button_square_clicked},
+            {'name': '2√x', 'row': 3, 'col': 2, 'func': self.button_sqrt_clicked},
             {'name': 'Backspace', 'row': 2, 'col': 3, 'func': self.button_backspace_clicked}
         ]
 
